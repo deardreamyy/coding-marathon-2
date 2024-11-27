@@ -30,7 +30,8 @@ export const useSignup = ({ setIsAuthenticated }) => {
                 setIsAuthenticated(true);
                 navigate("/");
             } else {
-                console.error("Signup failed", response);
+                const { error } = await response.json();
+                setError(error);
             }
         } catch (error) {
             console.error("Error during signup:", error);
