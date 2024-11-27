@@ -5,7 +5,7 @@ const useLogin = ({ email, password, setIsAuthenticated }) => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const handleLoginFunction = async () => {
+    const handleLogin = async () => {
         try {
             const response = await fetch("/api/users/login", {
               method: "POST",
@@ -32,7 +32,7 @@ const useLogin = ({ email, password, setIsAuthenticated }) => {
           }
     } 
 
-    return [error, handleLoginFunction];
+    return [error, handleLogin];
 }
 
 export default useLogin;
