@@ -31,6 +31,7 @@ export const useSignup = ({ setIsAuthenticated }) => {
                 setIsAuthenticated(true);
                 navigate("/");
             } else {
+                console.error("Signup failed");
                 const { error } = await response.json();
                 setError(error);
             }
@@ -46,7 +47,8 @@ export const useSignup = ({ setIsAuthenticated }) => {
         password2,
         setPassword,
         setPassword2,
-        handleSignup
+        handleSignup,
+        error
     }
 
 }
