@@ -1,7 +1,9 @@
 import {useState} from "react";
 import { useNavigate } from "react-router-dom";
 
-const useLogin = ({ email, password, setIsAuthenticated }) => {
+const useLogin = ({ setIsAuthenticated }) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -32,7 +34,7 @@ const useLogin = ({ email, password, setIsAuthenticated }) => {
           }
     } 
 
-    return [error, handleLogin];
+    return [email, setEmail, password, setPassword, error, handleLogin];
 }
 
 export default useLogin;

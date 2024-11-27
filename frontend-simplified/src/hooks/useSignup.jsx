@@ -5,6 +5,7 @@ export const useSignup = ({ setIsAuthenticated }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
     
     const handleSignup = async () => {
@@ -30,6 +31,7 @@ export const useSignup = ({ setIsAuthenticated }) => {
                 setIsAuthenticated(true);
                 navigate("/");
             } else {
+                console.error("Signup failed");
                 const { error } = await response.json();
                 setError(error);
             }
@@ -45,7 +47,8 @@ export const useSignup = ({ setIsAuthenticated }) => {
         password2,
         setPassword,
         setPassword2,
-        handleSignup
+        handleSignup,
+        error
     }
 
 }

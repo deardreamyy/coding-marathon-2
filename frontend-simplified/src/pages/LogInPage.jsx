@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import useLogin from '../hooks/useLogin';
 
 const LogInPage = ({setIsAuthenticated}) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, handleLogin] = useLogin({ email, password, setIsAuthenticated });
+    const [email, setEmail, password, setPassword, error, handleLogin] = useLogin({setIsAuthenticated });
 
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100">

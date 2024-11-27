@@ -1,7 +1,7 @@
 import { useSignup } from "../hooks/useSignup";
 
 const SignUpPage = ({ setIsAuthenticated }) => {
-  const { email, password, password2, setEmail, setPassword, setPassword2, handleSignup } = useSignup({ setIsAuthenticated });
+  const { email, password, password2, setEmail, setPassword, setPassword2, handleSignup, error } = useSignup({ setIsAuthenticated });
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -35,6 +35,7 @@ const SignUpPage = ({ setIsAuthenticated }) => {
               className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
             />
           </label>
+          {error && <div className="text-red-500">{error}</div>}
           <button
             onClick={handleSignup}
             className="w-full px-4 py-2 font-bold text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
