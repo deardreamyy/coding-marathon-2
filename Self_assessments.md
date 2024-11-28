@@ -3,8 +3,8 @@
 
 Links to all self-assesments:
 
-- Hilda
-- Karoliina
+- [Hilda](https://github.com/deardreamyy/coding-marathon-2/blob/main/h_selfAssessment.md)
+- [Karoliina](https://github.com/deardreamyy/coding-marathon-2/blob/main/k_self_assessment.md)
 - Lasse
 - Veera
 
