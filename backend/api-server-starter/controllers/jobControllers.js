@@ -56,7 +56,7 @@ const updateJob = async (req,res) =>{
         if(updatedJob){
             res.status(200).json(updatedJob)
         } else {
-            res.status(404).json({message:"Jobbi no found"})
+            res.status(404).json({message:"Job not found"})
         }
     } catch(error){
         res.status(500).json({message:"Failed to update job", error:error.message})
