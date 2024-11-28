@@ -32,9 +32,9 @@ const useLogin = ({ setIsAuthenticated }) => {
             console.error("Error during login:", error);
             setError("Error during login");
           }
-    };
+    } 
 
     return [email, setEmail, password, setPassword, error, handleLogin];
-};
+}
 
 export default useLogin;
