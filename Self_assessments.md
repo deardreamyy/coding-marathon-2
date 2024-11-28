@@ -1,7 +1,7 @@
 
-### Self assessments
+# Self assessments
 
-Links to all self-assesments:
+## Links to all self-assesments:
 
 - [Hilda](https://github.com/deardreamyy/coding-marathon-2/blob/main/h_selfAssessment.md)
 - [Karoliina](https://github.com/deardreamyy/coding-marathon-2/blob/main/k_self_assessment.md)
