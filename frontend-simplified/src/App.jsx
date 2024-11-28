@@ -13,8 +13,19 @@ import AddJobPage from "./pages/AddJobPage";
 import EditJobPage from "./pages/EditJobPage";
 import SignUpPage from "./pages/SignUpPage";
 import LogInPage from "./pages/LogInPage";
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    JSON.parse(sessionStorage.getItem("isAuthenticated")) || false
+  );
+
+  const setAuthState = (authState) => {
+    sessionStorage.setItem("isAuthenticated", JSON.stringify(authState));
+    setIsAuthenticated(authState);
+  };
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
@@ -24,8 +35,8 @@ const App = () => {
         <Route path="/edit-job/:id" element={<EditJobPage />} />
         <Route path="/jobs/:id" element={<JobPage />} />
         <Route path="*" element={<NotFoundPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/login" element={<LogInPage />} />
+        <Route path="/signup" element={ !isAuthenticated ? ( <SignUpPage setIsAuthenticated={setAuthState}/>) : (<Navigate to = '/' />)} />
+        <Route path="/login" element={!isAuthenticated ? ( <LogInPage setIsAuthenticated={setAuthState} />) : (<Navigate to = '/' />)} />
       </Route>
     )
   );

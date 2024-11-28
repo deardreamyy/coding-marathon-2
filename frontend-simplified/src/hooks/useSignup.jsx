@@ -2,10 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const useSignup = ({ setIsAuthenticated }) => {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
     const [error, setError] = useState(null);
+    const [phone_number, setPhone_number] = useState("");
+    const [gender, setGender] = useState("");
+    const [date_of_birth, setDate_of_birth] = useState("");
+    const [membership_status, setMembership_status] = useState("");
     const navigate = useNavigate();
     
     const handleSignup = async () => {
@@ -21,7 +26,14 @@ export const useSignup = ({ setIsAuthenticated }) => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({
+                    name,
+                    email,
+                    password,
+                    phone_number,
+                    gender,
+                    date_of_birth,
+                    membership_status}),
             });
 
             if (response.ok) {
@@ -37,10 +49,13 @@ export const useSignup = ({ setIsAuthenticated }) => {
             }
         } catch (error) {
             console.error("Error during signup:", error);
+            setError("Error during signup");
         }
     };
 
     return {
+        name,
+        setName,
         email,
         setEmail,
         password,
@@ -48,7 +63,15 @@ export const useSignup = ({ setIsAuthenticated }) => {
         setPassword,
         setPassword2,
         handleSignup,
-        error
+        error,
+        phone_number,
+        setPhone_number,
+        gender,
+        setGender,
+        date_of_birth,
+        setDate_of_birth,
+        membership_status,
+        setMembership_status
     }
 
 }

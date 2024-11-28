@@ -37,21 +37,22 @@ const loginUser = async (req, res) => {
 };
 
 const signupUser = async (req, res) => {
+    console.log(req.body);
     const { name, email, password, phone_number, gender, date_of_birth, membership_status } = req.body;
     try {
         if (!name || !email || !password || !phone_number || !gender || !date_of_birth || !membership_status) {
-            throw error('Please enter all fields');
+            throw new Error('Please enter all fields');
         }
         if (!validator.isEmail(email)) {
-            throw error('Email is not valid');
+            throw new Error('Email is not valid');
         }
         if (!validator.isStrongPassword(password)) {
-            throw error('Password is not strong enough');
+            throw new Error('Password is not strong enough');
         }
 
         const exists = await User.findOne({ email});
         if (exists) {
-            throw error('User already exists');
+            throw new Error('User already exists');
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -62,6 +63,7 @@ const signupUser = async (req, res) => {
         const token = createToken(user._id);
         res.status(200).json({ email, token });
     } catch (error) {
+        console.error("Signup error: ", error.message);
         res.status(400).json({message: error.message});
     }
 };
