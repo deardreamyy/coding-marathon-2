@@ -4,7 +4,8 @@
 
 In the beginning, me and Hilda discussed what structure we should utilize for the login and signup pages. We chose to use hook and page approach for easy readability and maintainability.
 
-```//UseLogin.jsx
+```
+//UseLogin.jsx
 import {useState} from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -62,7 +63,8 @@ export default useLogin;
 4. **Extensibility:**  
    Future enhancements, such as token management or tracking login attempts, can be easily added to the hook without affecting its consumers.
 
-```//LogInPage.jsx
+```
+//LogInPage.jsx
 import React, { useState } from 'react';
 import useLogin from '../hooks/useLogIn';
 
@@ -147,7 +149,8 @@ The original implementation of the job submission had some challenges that neede
 - The `submitForm` function was not asynchronous, leading to improper handling of asynchronous API operations.
 
 Original Code:  
-```//AddJobPage.jsx
+```
+//AddJobPage.jsx
 const addJob = async (newJob) => {
   try {
     const res = await fetch("/api/jobs", {
@@ -208,7 +211,8 @@ The issues were addressed as follows:
    - The `addJob` function returns `false` on failure and `true` on success, enabling clear decision-making in `submitForm`.
 
 Fixed Code:  
-```//AddJobPage.jsx
+```
+//AddJobPage.jsx
 const addJob = async (newJob) => {
   try {
     const data = JSON.parse(sessionStorage.getItem("user"));
