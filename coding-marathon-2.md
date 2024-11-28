@@ -2,7 +2,7 @@
 # Coding Marathon 2
 
 ## Render
-- link to render
+- link to render [backend](https://coding-marathon-2-nfjv.onrender.com/)
 
 - We also attempted to deploy the frontend on Render, but ran into some challenges and weren't able to complete the deployment within the given time frame.
 - We'll revisit this once we have more time to work through the process.
@@ -13,8 +13,7 @@
 
 - [Hilda](https://github.com/deardreamyy/coding-marathon-2/blob/main/h_selfAssessment.md)
 - [Karoliina](https://github.com/deardreamyy/coding-marathon-2/blob/main/k_self_assessment.md)
-- Lasse
-- Veera
+- [Lassa and Veera](https://github.com/deardreamyy/coding-marathon-2/blob/main/backend/api-server-starter/Self-Assessment.md)
 
 ## Note:
 
