@@ -29,10 +29,13 @@ const AddJobPage = () => {
 
   const addJob = async (newJob) => {
     try {
+      const data = JSON.parse(sessionStorage.getItem("user"));
+      const token = data.token;
       const res = await fetch("/api/jobs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify(newJob),
       });
@@ -47,7 +50,7 @@ const AddJobPage = () => {
     return true;
   };
 
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
 
     const newJob = {
@@ -64,11 +67,14 @@ const AddJobPage = () => {
       },
     };
 
-    addJob(newJob);
+    const success = await addJob(newJob);
 
+    if (!success) {
+      return;
+    } else {
     toast.success("Job Added Successfully");
-
     return navigate("/jobs");
+    }
   };
 
   return (
@@ -246,7 +252,7 @@ const AddJobPage = () => {
                 id="contact_phone"
                 name="contact_phone"
                 className="border rounded w-full py-2 px-3"
-                placeholder="Optional phone for applicants"
+                placeholder="Phone for applicants"
                 value={contactPhone}
                 onChange={(e) => setContactPhone(e.target.value)}
               />
